@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Category.cs](./CS/FilterCriteriaSample/DataModel/Category.cs) (VB: [Category.vb](./VB/FilterCriteriaSample/DataModel/Category.vb))
+* [Product.cs](./CS/FilterCriteriaSample/DataModel/Product.cs) (VB: [Product.vb](./VB/FilterCriteriaSample/DataModel/Product.vb))
+* [FilterViewModel.cs](./CS/FilterCriteriaSample/FilterViewModel.cs) (VB: [FilterViewModel.vb](./VB/FilterCriteriaSample/FilterViewModel.vb))
+* **[Form1.cs](./CS/FilterCriteriaSample/Form1.cs) (VB: [Form1.vb](./VB/FilterCriteriaSample/Form1.vb))**
+<!-- default file list end -->
 # How to filter a chart using the Filtering UI Context
 
 
