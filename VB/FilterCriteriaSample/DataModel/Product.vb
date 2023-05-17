@@ -1,54 +1,60 @@
-﻿Imports System.Data.Entity.Spatial
-Imports System.ComponentModel.DataAnnotations.Schema
-Imports System.ComponentModel.DataAnnotations
-Imports System.Collections.Generic
-Imports System
 Imports DevExpress.Utils.Filtering
+Imports System.ComponentModel.DataAnnotations
+Imports System.ComponentModel.DataAnnotations.Schema
 
 Namespace FilterCriteriaSample
 
-    Partial Public Class Product
-        <Key, Display(AutoGenerateFilter := False)> _
-        Public Property ProductID() As Integer
+    Public Partial Class Product
 
-        <Required, StringLength(40), Display(AutoGenerateFilter := False)> _
-        Public Property ProductName() As String
+        <Key>
+        <Display(AutoGenerateFilter:=False)>
+        Public Property ProductID As Integer
 
-        <Display(AutoGenerateFilter := False)> _
-        Public Property SupplierID() As Integer?
+        <Required>
+        <StringLength(40)>
+        <Display(AutoGenerateFilter:=False)>
+        Public Property ProductName As String
 
-        <Display(Name := "Category"), FilterLookup(DataSourceMember := "Categories", DisplayMember := "CategoryName", ValueMember := "CategoryID", UseBlanks := False)> _
-        Public Property CategoryID() As Integer
+        <Display(AutoGenerateFilter:=False)>
+        Public Property SupplierID As Integer?
 
-        <StringLength(20), Display(AutoGenerateFilter := False)> _
-        Public Property QuantityPerUnit() As String
+        <Display(Name:="Category")>
+        <FilterLookup(DataSourceMember:="Categories", DisplayMember:="CategoryName", ValueMember:="CategoryID", UseBlanks:=False)>
+        Public Property CategoryID As Integer
 
-        <Display(Name := "Unit Price"), FilterRange(EditorType := RangeUIEditorType.Default, MinimumMember := "UnitPriceMinValue", MaximumMember := "UnitPriceMaxValue"), Column(TypeName := "smallmoney")> _
-        Public Property UnitPrice() As Decimal?
+        <StringLength(20)>
+        <Display(AutoGenerateFilter:=False)>
+        Public Property QuantityPerUnit As String
 
-        <Display(Name := "Units in Stock"), FilterRange(EditorType := RangeUIEditorType.Range, MaximumMember := "UnitsInStockMaxValue", MinimumMember := "UnitsInStockMinValue")> _
-        Public Property UnitsInStock() As Short?
+        <Display(Name:="Unit Price")>
+        <FilterRange(EditorType:=RangeUIEditorType.Default, MinimumMember:="UnitPriceMinValue", MaximumMember:="UnitPriceMaxValue")>
+        <Column(TypeName:="smallmoney")>
+        Public Property UnitPrice As Decimal?
 
-        <Display(Name := "Units on Order"), FilterRange(EditorType := RangeUIEditorType.Range, MaximumMember := "UnitsOnOrderMaxValue", MinimumMember := "UnitsOnOrderMinValue")> _
-        Public Property UnitsOnOrder() As Short?
+        <Display(Name:="Units in Stock")>
+        <FilterRange(EditorType:=RangeUIEditorType.Range, MaximumMember:="UnitsInStockMaxValue", MinimumMember:="UnitsInStockMinValue")>
+        Public Property UnitsInStock As Short?
 
-        <Display(AutoGenerateFilter := False)> _
-        Public Property ReorderLevel() As Short?
+        <Display(Name:="Units on Order")>
+        <FilterRange(EditorType:=RangeUIEditorType.Range, MaximumMember:="UnitsOnOrderMaxValue", MinimumMember:="UnitsOnOrderMinValue")>
+        Public Property UnitsOnOrder As Short?
 
-        <Display(AutoGenerateFilter := False)> _
-        Public Property Discontinued() As Boolean
+        <Display(AutoGenerateFilter:=False)>
+        Public Property ReorderLevel As Short?
 
-        <Column(TypeName := "text"), Display(AutoGenerateFilter := False)> _
-        Public Property EAN13() As String
+        <Display(AutoGenerateFilter:=False)>
+        Public Property Discontinued As Boolean
 
-        <Display(AutoGenerateFilter := False)> _
-        Public ReadOnly Property OnOrderIncome() As Decimal
+        <Column(TypeName:="text")>
+        <Display(AutoGenerateFilter:=False)>
+        Public Property EAN13 As String
+
+        <Display(AutoGenerateFilter:=False)>
+        Public ReadOnly Property OnOrderIncome As Decimal
             Get
-
-                Dim unitsOnOrder_Renamed As Short = If(UnitsOnOrder.HasValue, UnitsOnOrder.Value, CShort(0))
-
-                Dim unitPrice_Renamed As Decimal = If(UnitPrice.HasValue, UnitPrice.Value, 0)
-                Return unitsOnOrder_Renamed * unitPrice_Renamed
+                Dim unitsOnOrder As Short = If(Me.UnitsOnOrder.HasValue, Me.UnitsOnOrder.Value, CShort(0))
+                Dim unitPrice As Decimal = If(Me.UnitPrice.HasValue, Me.UnitPrice.Value, 0)
+                Return unitsOnOrder * unitPrice
             End Get
         End Property
     End Class

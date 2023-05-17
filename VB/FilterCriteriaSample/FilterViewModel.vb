@@ -1,92 +1,91 @@
-﻿Imports System
+Imports System
 Imports System.Collections.Generic
 Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
 
 Namespace FilterCriteriaSample
+
     Public Class FilterViewModel
-        Private privateCategories As List(Of Category)
-        Public Property Categories() As List(Of Category)
+
+        Private _Categories As List(Of FilterCriteriaSample.Category), _UnitPriceMinValue As Decimal, _UnitPriceMaxValue As Decimal, _UnitsOnOrderMinValue As Short, _UnitsOnOrderMaxValue As Short, _UnitsInStockMinValue As Short, _UnitsInStockMaxValue As Short
+
+        Public Property Categories As List(Of Category)
             Get
-                Return privateCategories
+                Return _Categories
             End Get
+
             Private Set(ByVal value As List(Of Category))
-                privateCategories = value
+                _Categories = value
             End Set
         End Property
 
-        Private privateUnitPriceMinValue As Decimal
-        Public Property UnitPriceMinValue() As Decimal
+        Public Property UnitPriceMinValue As Decimal
             Get
-                Return privateUnitPriceMinValue
+                Return _UnitPriceMinValue
             End Get
+
             Private Set(ByVal value As Decimal)
-                privateUnitPriceMinValue = value
+                _UnitPriceMinValue = value
             End Set
         End Property
-        Private privateUnitPriceMaxValue As Decimal
-        Public Property UnitPriceMaxValue() As Decimal
+
+        Public Property UnitPriceMaxValue As Decimal
             Get
-                Return privateUnitPriceMaxValue
+                Return _UnitPriceMaxValue
             End Get
+
             Private Set(ByVal value As Decimal)
-                privateUnitPriceMaxValue = value
+                _UnitPriceMaxValue = value
             End Set
         End Property
 
-        Private privateUnitsOnOrderMinValue As Short
-        Public Property UnitsOnOrderMinValue() As Short
+        Public Property UnitsOnOrderMinValue As Short
             Get
-                Return privateUnitsOnOrderMinValue
+                Return _UnitsOnOrderMinValue
             End Get
+
             Private Set(ByVal value As Short)
-                privateUnitsOnOrderMinValue = value
-            End Set
-        End Property
-        Private privateUnitsOnOrderMaxValue As Short
-        Public Property UnitsOnOrderMaxValue() As Short
-            Get
-                Return privateUnitsOnOrderMaxValue
-            End Get
-            Private Set(ByVal value As Short)
-                privateUnitsOnOrderMaxValue = value
+                _UnitsOnOrderMinValue = value
             End Set
         End Property
 
-        Private privateUnitsInStockMinValue As Short
-        Public Property UnitsInStockMinValue() As Short
+        Public Property UnitsOnOrderMaxValue As Short
             Get
-                Return privateUnitsInStockMinValue
+                Return _UnitsOnOrderMaxValue
             End Get
+
             Private Set(ByVal value As Short)
-                privateUnitsInStockMinValue = value
-            End Set
-        End Property
-        Private privateUnitsInStockMaxValue As Short
-        Public Property UnitsInStockMaxValue() As Short
-            Get
-                Return privateUnitsInStockMaxValue
-            End Get
-            Private Set(ByVal value As Short)
-                privateUnitsInStockMaxValue = value
+                _UnitsOnOrderMaxValue = value
             End Set
         End Property
 
+        Public Property UnitsInStockMinValue As Short
+            Get
+                Return _UnitsInStockMinValue
+            End Get
+
+            Private Set(ByVal value As Short)
+                _UnitsInStockMinValue = value
+            End Set
+        End Property
+
+        Public Property UnitsInStockMaxValue As Short
+            Get
+                Return _UnitsInStockMaxValue
+            End Get
+
+            Private Set(ByVal value As Short)
+                _UnitsInStockMaxValue = value
+            End Set
+        End Property
 
         Public Sub New(ByVal context As NwindDbContext)
             Categories = context.Categories.ToList()
-
-            UnitPriceMinValue = context.Products.Min(Function(p) p.UnitPrice).Value
-            UnitPriceMaxValue = context.Products.Max(Function(p) p.UnitPrice).Value
-
-            UnitsInStockMinValue = context.Products.Min(Function(p) p.UnitsInStock).Value
-            UnitsInStockMaxValue = context.Products.Max(Function(p) p.UnitsInStock).Value
-
-            UnitsOnOrderMinValue = context.Products.Min(Function(p) p.UnitsOnOrder).Value
-            UnitsOnOrderMaxValue = context.Products.Max(Function(p) p.UnitsOnOrder).Value
+            UnitPriceMinValue = Queryable.Min(Of Product, Global.System.Nullable(Of Global.System.[Decimal]))(context.Products, CType(Function(p) CType(p.UnitPrice, Decimal?), Expressions.Expression(Of Func(Of Product, Decimal?)))).Value
+            UnitPriceMaxValue = Queryable.Max(Of Product, Global.System.Nullable(Of Global.System.[Decimal]))(context.Products, CType(Function(p) CType(p.UnitPrice, Decimal?), Expressions.Expression(Of Func(Of Product, Decimal?)))).Value
+            UnitsInStockMinValue = Queryable.Min(Of Product, Global.System.Nullable(Of Global.System.Int16))(context.Products, CType(Function(p) CType(p.UnitsInStock, Short?), Expressions.Expression(Of Func(Of Product, Short?)))).Value
+            UnitsInStockMaxValue = Queryable.Max(Of Product, Global.System.Nullable(Of Global.System.Int16))(context.Products, CType(Function(p) CType(p.UnitsInStock, Short?), Expressions.Expression(Of Func(Of Product, Short?)))).Value
+            UnitsOnOrderMinValue = Queryable.Min(Of Product, Global.System.Nullable(Of Global.System.Int16))(context.Products, CType(Function(p) CType(p.UnitsOnOrder, Short?), Expressions.Expression(Of Func(Of Product, Short?)))).Value
+            UnitsOnOrderMaxValue = Queryable.Max(Of Product, Global.System.Nullable(Of Global.System.Int16))(context.Products, CType(Function(p) CType(p.UnitsOnOrder, Short?), Expressions.Expression(Of Func(Of Product, Short?)))).Value
         End Sub
-
-
     End Class
 End Namespace

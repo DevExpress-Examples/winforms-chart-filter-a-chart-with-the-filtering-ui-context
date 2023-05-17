@@ -1,5 +1,7 @@
-﻿Namespace FilterCriteriaSample
-    Partial Public Class Form1
+Namespace FilterCriteriaSample
+
+    Partial Class Form1
+
         ''' <summary>
         ''' Required designer variable.
         ''' </summary>
@@ -10,34 +12,34 @@
         ''' </summary>
         ''' <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (components IsNot Nothing) Then
-                components.Dispose()
+            If disposing AndAlso (Me.components IsNot Nothing) Then
+                Me.components.Dispose()
             End If
+
             MyBase.Dispose(disposing)
         End Sub
 
-        #Region "Windows Form Designer generated code"
-
+#Region "Windows Form Designer generated code"
         ''' <summary>
         ''' Required method for Designer support - do not modify
         ''' the contents of this method with the code editor.
         ''' </summary>
         Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
-            Dim xyDiagram2 As New DevExpress.XtraCharts.XYDiagram()
-            Dim series2 As New DevExpress.XtraCharts.Series()
+            Dim xyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+            Dim series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
             Me.chartControl = New DevExpress.XtraCharts.ChartControl()
             Me.splitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
             Me.filtersContainer = New DevExpress.XtraBars.Navigation.AccordionControl()
             Me.defaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
             Me.filteringUIContext = New DevExpress.Utils.Filtering.FilteringUIContext(Me.components)
-            CType(Me.chartControl, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(xyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(series2, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.splitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.chartControl), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((xyDiagram2), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((series2), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.splitContainerControl1), System.ComponentModel.ISupportInitialize).BeginInit()
             Me.splitContainerControl1.SuspendLayout()
-            CType(Me.filtersContainer, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.filteringUIContext, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.filtersContainer), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.filteringUIContext), System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             ' 
             ' chartControl
@@ -56,7 +58,7 @@
             series2.Name = "Products"
             series2.SeriesPointsSorting = DevExpress.XtraCharts.SortingMode.Ascending
             series2.SeriesPointsSortingKey = DevExpress.XtraCharts.SeriesPointKey.Value_1
-            Me.chartControl.SeriesSerializable = New DevExpress.XtraCharts.Series() { series2}
+            Me.chartControl.SeriesSerializable = New DevExpress.XtraCharts.Series() {series2}
             Me.chartControl.Size = New System.Drawing.Size(882, 688)
             Me.chartControl.TabIndex = 0
             ' 
@@ -101,24 +103,26 @@
             Me.Controls.Add(Me.splitContainerControl1)
             Me.Name = "Form1"
             Me.Text = "Form1"
-            CType(xyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(series2, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.chartControl, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.splitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+            AddHandler Me.Load, New System.EventHandler(AddressOf Me.Form1_Load)
+            CType((xyDiagram2), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((series2), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.chartControl), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.splitContainerControl1), System.ComponentModel.ISupportInitialize).EndInit()
             Me.splitContainerControl1.ResumeLayout(False)
-            CType(Me.filtersContainer, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.filteringUIContext, System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.filtersContainer), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.filteringUIContext), System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
-
         End Sub
 
-        #End Region
-
+#End Region
         Private chartControl As DevExpress.XtraCharts.ChartControl
+
         Private splitContainerControl1 As DevExpress.XtraEditors.SplitContainerControl
+
         Private defaultLookAndFeel As DevExpress.LookAndFeel.DefaultLookAndFeel
+
         Private filteringUIContext As DevExpress.Utils.Filtering.FilteringUIContext
+
         Private filtersContainer As DevExpress.XtraBars.Navigation.AccordionControl
     End Class
 End Namespace
-
