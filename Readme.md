@@ -6,7 +6,7 @@
 
 # Chart for WinForms - How to Filter a Chart with the Filtering UI Context
 
-This example demonstrates how to filter a series data source with the `FilterCriteria` property in the [Filtering UI Context](https://docs.devexpress.com/WindowsForms/114877/common-features/filtering-ui-context).
+This example demonstrates how to filter a series data source with the `FilterCriteria` property in the [UI](https://docs.devexpress.com/WindowsForms/114877/common-features/filtering-ui-context).
 
 ![Chart](./images/Chart.png)
 
